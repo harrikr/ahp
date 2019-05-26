@@ -42,7 +42,17 @@
 	<form class="ui form" method="post" action="edit.php">
 		<div class="inline field">
 			<label>Nama <?php echo $jenis ?></label>
-			<input type="text" name="nama" value="<?php echo $nama?>">
+			<select name="nama">
+			<?php
+$konek = mysqli_connect("localhost","root","","ahp");
+$query = "select * from alternatif";
+$hasil = mysqli_query($konek,$query);
+ while($data=mysqli_fetch_array($hasil)){
+	echo " <option value=$data[nama]>$data[nama]</option>";
+	
+}
+?></select>
+
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<input type="hidden" name="jenis" value="<?php echo $jenis?>">
 		</div>
